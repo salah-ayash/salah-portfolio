@@ -1,0 +1,19 @@
+
+{
+  "Home": {
+    "greeting": "Hello, I'm Salah Ayash",
+    "role": "Full-Stack, Mobile & Cloud Developer",
+    "description": "I build modern digital experiences and powerful applications.",
+    "projects": "View My Projects",
+    "contact": "Contact Me"
+  },
+  "Navigation": {
+    "home": "Home",
+    "about": "About",
+    "experience": "Experience",
+    "skills": "Skills",
+    "projects": "Projects",
+    "contact": "Contact"
+  }
+}
+  
