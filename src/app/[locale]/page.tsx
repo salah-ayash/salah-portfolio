@@ -1,6 +1,10 @@
 
 import Hero from "@/components/Hero";
 import Navbar from "@/components/Navbar";
+import About from "@/components/About";
+import Experience from "@/components/Experience";
+import Skills from "@/components/Skills";
+import Projects from "@/components/Projects";
 import { useTranslations } from "next-intl";
 
 export default function HomePage() {
@@ -13,7 +17,7 @@ export default function HomePage() {
       {/* Futuristic Background Glow */}
       <div className="pointer-events-none absolute left-1/2 top-0 h-96 w-96 -translate-x-1/2 rounded-full bg-blue-600/20 blur-[120px]" />
 
-      {/* Responsive Navbar */}
+      {/* Responsive Navigation Bar */}
       <Navbar />
 
       {/* Main Content */}
@@ -22,21 +26,17 @@ export default function HomePage() {
         {/* Animated Hero Section */}
         <Hero />
 
-        {/* Projects Section */}
-        <section
-          id="projects"
-          className="scroll-mt-24 border-t border-white/10 py-24"
-        >
-          <h2 className="mb-8 text-3xl font-bold sm:text-4xl">
-            {nav("projects")}
-          </h2>
+        {/* About Me Section */}
+        <About />
 
-          <div className="rounded-2xl border border-white/10 bg-white/5 p-8 transition-all duration-300 hover:border-blue-500/40 hover:bg-white/10">
-            <p className="text-slate-400">
-              {t("description")}
-            </p>
-          </div>
-        </section>
+        {/* Professional Experience Section */}
+        <Experience />
+
+        {/* Technical Skills Section */}
+        <Skills />
+
+        {/* Featured Projects Section */}
+        <Projects />
 
         {/* Contact Section */}
         <section

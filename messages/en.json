@@ -14,6 +14,84 @@
     "skills": "Skills",
     "projects": "Projects",
     "contact": "Contact"
+  },
+  "About": {
+    "eyebrow": "GET TO KNOW ME",
+    "title": "The Developer Behind the Code",
+    "description": "I'm a Computer Science graduate from Universiti Teknikal Malaysia Melaka (UTeM), passionate about building modern web, mobile and cloud applications. My experience includes developing Arabic learning platforms, CCTV streaming systems, IoT dashboards and backend APIs.",
+    "educationTitle": "Education",
+    "educationValue": "Bachelor of Computer Science — UTeM, 2025",
+    "experienceTitle": "Professional Experience",
+    "experienceValue": "Mobile & Web Development Intern — Bumi Terus ITS",
+    "focusTitle": "My Specializations",
+    "focusValue": "Full-Stack Development, Mobile Applications and Cloud Integration"
+  },
+  
+"Experience": {
+  "eyebrow": "MY CAREER JOURNEY",
+  "title": "Professional Experience",
+  "description": "Building real-world solutions through mobile, web, IoT and cloud technologies.",
+  "role": "Mobile & Web Development Intern",
+  "company": "Bumi Terus ITS Sdn Bhd",
+  "cctv": "Developed a Flutter CCTV application with live streaming and recorded video playback.",
+  "iot": "Built an IoT dashboard for real-time device monitoring and control.",
+  "aws": "Worked with AWS S3, Lambda and Kinesis Video Streams for cloud integration.",
+  "support": "Supported CCTV installations, troubleshooting and client system configuration."
+},
+
+"Skills": {
+  "eyebrow": "MY TECH STACK",
+  "title": "Skills & Technologies",
+  "description": "A collection of technologies and tools I've worked with through academic, personal, and professional projects.",
+  "languages": "Programming Languages",
+  "frontend": "Frontend Development",
+  "backend": "Backend & APIs",
+  "mobile": "Mobile Development",
+  "database": "Databases",
+  "firebase": "Firebase",
+  "aws": "AWS Cloud Services",
+  "video": "CCTV & Video Streaming",
+  "iot": "IoT & Smart Devices",
+  "tools": "Development Tools & Deployment"
+  
+},
+
+"Projects": {
+  "eyebrow": "MY WORK",
+  "title": "Featured Projects",
+  "description": "Explore some of the applications and systems I've built.",
+  "featured": "FEATURED PROJECT",
+  "more": "More Projects",
+  "preview": "Project Preview",
+  "iqra": {
+    "title": "IQRA — Arabic Learning Platform",
+    "description": "A bilingual Arabic learning application featuring interactive lessons, quizzes, pronunciation recognition, progress tracking and a PHP/MySQL backend."
+  },
+  "cctv": {
+    "title": "CCTV Streaming & Playback System",
+    "description": "A Flutter application for viewing live security cameras and accessing recorded footage by date through RTSP and camera APIs."
+  },
+  "iot": {
+    "title": "Smart IoT Monitoring Dashboard",
+    "description": "A web-based dashboard for monitoring device status, managing connected devices and enabling remote control."
+  },
+  "aws": {
+    "title": "AWS Cloud Video Integration",
+    "description": "Cloud integration involving video streaming, AWS Kinesis Video Streams, S3 storage, Lambda automation and media processing."
+  },
+  "rental": {
+    "title": "Heavy Equipment Rental System",
+    "description": "A C++ and MySQL management application for handling construction equipment rental operations and database records."
+  },
+  "wanderlust": {
+    "title": "Melaka Wanderlust",
+    "description": "A Flutter-based travel application focused on exploring attractions and destinations around Melaka, Malaysia."
   }
 }
+
+
+
+
   
+
+}

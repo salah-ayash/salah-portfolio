@@ -10,11 +10,19 @@ export default function Navbar() {
   const locale = useLocale();
   const nav = useTranslations("Navigation");
 
-  const links = [
-    {name: nav("home"), href: "#home"},
-    {name: nav("projects"), href: "#projects"},
-    {name: nav("contact"), href: "#contact"}
-  ];
+ 
+
+
+const links = [
+  { name: nav("home"), href: "#home" },
+  { name: nav("about"), href: "#about" },
+  { name: nav("experience"), href: "#experience" },
+  { name: nav("skills"), href: "#skills" },
+  { name: nav("projects"), href: "#projects" },
+  { name: nav("contact"), href: "#contact" },
+];
+
+
 
   return (
     <header className="sticky top-0 z-50 border-b border-white/10 bg-[#080B14]/85 backdrop-blur-xl">
