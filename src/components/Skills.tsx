@@ -2,10 +2,11 @@
 "use client";
 
 import { motion, MotionConfig } from "motion/react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 
 export default function Skills() {
   const t = useTranslations("Skills");
+  const isArabic = useLocale() === "ar";
 
   const categories = [
     {
@@ -64,12 +65,14 @@ export default function Skills() {
         "Dart",
         "Android",
         "Flutter Web",
+        "Google Maps",
+        "Geolocator",
+        "Provider",
+        "Firebase Integration",
+        "Google Sign-In",
         "Speech Recognition",
-        "speech_to_text",
-        "audioplayers",
-        "flutter_vlc_player",
-        "shared_preferences",
-        "image_picker",
+        "RTSP Video Playback",
+        "Image Picker",
       ],
     },
     {
@@ -81,6 +84,7 @@ export default function Skills() {
         "SQLite",
         "SQL",
         "Database Design",
+        "CRUD Operations",
       ],
     },
     {
@@ -129,11 +133,11 @@ export default function Skills() {
       title: t("iot"),
       technologies: [
         "IoT Dashboards",
-        "Shelly Devices",
+        "Shelly Smart Switches",
         "Shelly API",
         "Real-Time Monitoring",
         "Remote Device Control",
-        "Device Integration",
+        "Device API Integration",
       ],
     },
     {
@@ -146,7 +150,6 @@ export default function Skills() {
         "VS Code",
         "Android Studio",
         "Visual Studio",
-        "Java Swing",
         "MySQL Workbench",
         "WAMP",
         "WSL / Ubuntu",
@@ -154,6 +157,7 @@ export default function Skills() {
         "Netlify",
         "HelioHost",
         "Vercel",
+        "Java Swing",
       ],
     },
   ];
@@ -162,84 +166,118 @@ export default function Skills() {
     <MotionConfig reducedMotion="user">
       <section
         id="skills"
-        className="scroll-mt-24 border-t border-white/10 py-24"
+        dir={isArabic ? "rtl" : "ltr"}
+        className="relative isolate w-full scroll-mt-24 overflow-hidden border-t border-white/10 bg-[#080B14] py-20 sm:py-24"
       >
-        {/* Section Heading */}
-        <motion.div
-          initial={{ opacity: 0, y: 25 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="mb-14"
-        >
-          <span className="text-sm font-semibold tracking-wider text-blue-400">
-            {t("eyebrow")}
-          </span>
+        {/* Background glows */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute -right-40 top-0 h-[450px] w-[450px] rounded-full bg-blue-600/[0.07] blur-[120px]"
+        />
 
-          <h2 className="mt-4 text-3xl font-extrabold sm:text-5xl">
-            {t("title")}
-          </h2>
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute -left-40 bottom-0 h-[450px] w-[450px] rounded-full bg-cyan-500/[0.05] blur-[120px]"
+        />
 
-          <div className="my-6 h-1 w-20 rounded-full bg-blue-500" />
+        {/* Centered content */}
+        <div className="relative mx-auto w-full max-w-6xl px-5 sm:px-8 lg:px-10">
 
-          <p className="max-w-2xl leading-8 text-slate-400">
-            {t("description")}
-          </p>
-        </motion.div>
-
-        {/* Technical Skills Grid */}
-        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-          {categories.map((category, index) => (
-            <motion.article
-              key={category.id}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.1 }}
-              transition={{
-                duration: 0.5,
-                delay: (index % 3) * 0.1,
-              }}
-              whileHover={{ y: -5 }}
-              className="group relative overflow-hidden rounded-2xl border border-white/10 bg-[#101827] p-6 transition-colors duration-300 hover:border-blue-500/50"
+          {/* Section heading */}
+          <motion.div
+            initial={{ opacity: 0, y: 25 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.6 }}
+            className="mb-12 text-start"
+          >
+            <span
+              className={`inline-block text-xs font-bold uppercase text-blue-400 sm:text-sm ${
+                isArabic ? "" : "tracking-[0.15em]"
+              }`}
             >
-              {/* Decorative Background Glow */}
-              <div
-                aria-hidden="true"
-                className="pointer-events-none absolute -end-12 -top-12 h-32 w-32 rounded-full bg-blue-500/10 blur-3xl"
-              />
+              {t("eyebrow")}
+            </span>
 
-              <div className="relative">
-                {/* Category Number and Icon */}
-                <div className="mb-5 flex items-center justify-between">
-                  <span className="font-mono text-sm text-blue-400">
-                    {category.id}
-                  </span>
+            <h2 className="mt-5 text-3xl font-extrabold leading-[1.35] tracking-tight text-white sm:text-4xl lg:text-5xl">
+              {t("title")}
+            </h2>
 
-                  <span className="text-3xl">
-                    {category.icon}
-                  </span>
-                </div>
+            {/* Accent line */}
+            <div className="my-7 h-1 w-24 rounded-full bg-gradient-to-r from-blue-500 to-cyan-400" />
 
-                {/* Category Title */}
-                <h3 className="mb-6 text-xl font-bold text-white">
-                  {category.title}
-                </h3>
+            <p className="max-w-2xl text-base leading-8 text-slate-400 sm:text-lg sm:leading-9">
+              {t("description")}
+            </p>
+          </motion.div>
 
-                {/* Technology Badges */}
-                <div className="flex flex-wrap gap-2">
-                  {category.technologies.map((tech) => (
+          {/* Technical skills grid */}
+          <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+            {categories.map((category, index) => (
+              <motion.article
+                key={category.id}
+                initial={{ opacity: 0, y: 25 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.1 }}
+                transition={{
+                  duration: 0.55,
+                  delay: (index % 3) * 0.08,
+                }}
+                whileHover={{ y: -5 }}
+                className="group relative flex h-full min-w-0 flex-col overflow-hidden rounded-2xl border border-blue-400/15 bg-gradient-to-br from-[#111D32] via-[#101827] to-[#0D1729] p-5 shadow-[0_8px_30px_rgba(0,0,0,0.12)] transition-colors duration-300 hover:border-blue-400/45 sm:p-6"
+              >
+
+                {/* Decorative glow */}
+                <div
+                  aria-hidden="true"
+                  className="pointer-events-none absolute -end-12 -top-12 h-36 w-36 rounded-full bg-blue-500/[0.07] blur-3xl transition-colors duration-300 group-hover:bg-blue-500/[0.14]"
+                />
+
+                <div className="relative flex h-full flex-col">
+
+                  {/* Category number and icon */}
+                  <div className="mb-6 flex items-center justify-between gap-3">
                     <span
-                      key={tech}
                       dir="ltr"
-                      className="rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-xs font-medium text-slate-300 transition-colors hover:border-blue-500/40 hover:bg-blue-500/10 hover:text-blue-300"
+                      className="font-mono text-xs font-semibold tracking-widest text-blue-400 sm:text-sm"
                     >
-                      {tech}
+                      {category.id}
                     </span>
-                  ))}
+
+                    <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border border-blue-500/20 bg-blue-500/10 text-2xl transition-colors duration-300 group-hover:border-blue-400/40 group-hover:bg-blue-500/20">
+                      <span aria-hidden="true">
+                        {category.icon}
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Category title */}
+                  <h3 className="min-h-[3.5rem] text-start text-lg font-bold leading-7 text-white sm:text-xl">
+                    {category.title}
+                  </h3>
+
+                  {/* Small accent separator */}
+                  <div className="my-5 h-px w-full bg-gradient-to-r from-blue-500/30 via-white/10 to-transparent" />
+
+                  {/* Technology badges */}
+                  <div className="flex flex-wrap content-start gap-2">
+                    {category.technologies.map((tech) => (
+                      <span
+                        key={tech}
+                        dir="ltr"
+                        className="max-w-full rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-xs font-medium leading-5 text-slate-300 transition-all duration-300 hover:border-blue-400/40 hover:bg-blue-500/10 hover:text-blue-300"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
                 </div>
-              </div>
-            </motion.article>
-          ))}
+
+                {/* Bottom hover accent */}
+                <div className="absolute bottom-0 start-0 h-[2px] w-0 bg-gradient-to-r from-blue-500 to-cyan-400 transition-all duration-500 group-hover:w-full" />
+              </motion.article>
+            ))}
+          </div>
         </div>
       </section>
     </MotionConfig>

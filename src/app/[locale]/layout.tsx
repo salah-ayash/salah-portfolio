@@ -27,6 +27,7 @@ export default async function LocaleLayout({
     <html
       lang={locale}
       dir={locale === 'ar' ? 'rtl' : 'ltr'}
+      data-scroll-behavior="smooth"
     >
       <body className="min-h-screen bg-[#080B14] text-white antialiased">
         <NextIntlClientProvider>
