@@ -8,7 +8,7 @@ import { useLocale } from "next-intl";
 
 const CONTACT_EMAIL = "salahayash8@gmail.com";
 
-const GITHUB_URL = "https://github.com/salah804";
+const GITHUB_URL = "https://github.com/salah-ayash";
 
 const translations = {
   en: {
@@ -200,7 +200,7 @@ export default function Contact() {
                       dir="ltr"
                       className="mt-4 text-start text-sm font-medium text-blue-300 transition-colors group-hover:text-cyan-300"
                     >
-                      github.com/salah804
+                      github.com/salah-ayash
                     </p>
                   </div>
                 </div>
