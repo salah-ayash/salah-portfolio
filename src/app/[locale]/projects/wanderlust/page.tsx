@@ -304,7 +304,7 @@ const translations = {
     galleryButton: "عرض صور التطبيق",
 
     overviewLabel: "01 / نظرة عامة",
-    overviewTitle: "طريقة أذكى لاكتشاف مملاكا",
+    overviewTitle: "طريقة أذكى لاكتشاف ملاكا",
 
     challengeTitle: "التحدي",
     challenge:
