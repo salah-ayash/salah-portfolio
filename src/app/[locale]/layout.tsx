@@ -44,6 +44,11 @@ export async function generateMetadata({
     title,
     description,
 
+verification: {
+  google: "9pJFpkJ6OE74oYT0pqqkxZ0jBOeNs5yqAGxRmfK0g7Q",
+},
+
+
     applicationName: "Salah Ayash Portfolio",
 
     authors: [
