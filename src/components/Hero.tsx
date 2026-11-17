@@ -132,29 +132,61 @@ className="mb-6 max-w-full text-4xl font-extrabold leading-[1.35] tracking-tight
             {t("description")}
           </motion.p>
 
-          {/* Buttons */}
-          <motion.div
-            variants={fadeUp}
-            initial="hidden"
-            animate="visible"
-            transition={{ duration: 0.7, delay: 0.42 }}
-            className="mt-9 flex flex-wrap gap-4"
-          >
-            <a
-              href="#projects"
-              className="inline-flex items-center justify-center gap-2 rounded-xl bg-blue-600 px-7 py-3.5 text-sm font-semibold text-white shadow-[0_8px_30px_rgba(37,99,235,0.22)] transition-all duration-300 hover:-translate-y-1 hover:bg-blue-500 hover:shadow-[0_12px_35px_rgba(37,99,235,0.35)]"
-            >
-              {t("projects")}
-              <span aria-hidden="true">↗</span>
-            </a>
+          
+{/* Buttons */}
+<motion.div
+  variants={fadeUp}
+  initial="hidden"
+  animate="visible"
+  transition={{ duration: 0.7, delay: 0.42 }}
+  className="mt-9 flex flex-wrap gap-4"
+>
+  {/* View My Projects */}
+  <a
+    href="#projects"
+    className="inline-flex items-center justify-center gap-2 rounded-xl bg-blue-600 px-7 py-3.5 text-sm font-semibold text-white shadow-[0_8px_30px_rgba(37,99,235,0.22)] transition-all duration-300 hover:-translate-y-1 hover:bg-blue-500 hover:shadow-[0_12px_35px_rgba(37,99,235,0.35)]"
+  >
+    {t("projects")}
+    <span aria-hidden="true">↗</span>
+  </a>
 
-            <a
-              href="#contact"
-              className="inline-flex items-center justify-center rounded-xl border border-white/15 bg-white/5 px-7 py-3.5 text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-1 hover:border-blue-400/50 hover:bg-blue-500/10"
-            >
-              {t("contact")}
-            </a>
-          </motion.div>
+  {/* Contact Me */}
+  <a
+    href="#contact"
+    className="inline-flex items-center justify-center rounded-xl border border-white/15 bg-white/5 px-7 py-3.5 text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-1 hover:border-blue-400/50 hover:bg-blue-500/10"
+  >
+    {t("contact")}
+  </a>
+
+  {/* Download CV */}
+  <a
+    href="/Salah-Ayash-CV.pdf"
+    download="Salah-Ayash-CV.pdf"
+    className="group inline-flex items-center justify-center gap-2 rounded-xl border border-cyan-400/40 bg-cyan-400/10 px-7 py-3.5 text-sm font-semibold text-cyan-300 transition-all duration-300 hover:-translate-y-1 hover:border-cyan-300/70 hover:bg-cyan-400/20 hover:text-white"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="18"
+      height="18"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <path d="M12 3v12" />
+      <path d="m7 10 5 5 5-5" />
+      <path d="M5 17v3h14v-3" />
+    </svg>
+
+    <span>
+      {isArabic ? "تحميل السيرة الذاتية" : "Download CV"}
+    </span>
+  </a>
+</motion.div>
+
 
           {/* Technical highlights */}
           <motion.div

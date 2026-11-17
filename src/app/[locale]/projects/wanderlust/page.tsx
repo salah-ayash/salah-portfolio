@@ -18,7 +18,7 @@ const screenshots = [
     descEn:
       "Browse Melaka attractions through an interactive map and category-based listings.",
     descAr:
-      "استكشاف معالم ملقا من خلال خريطة تفاعلية وقوائم مصنفة.",
+      "استكشاف معالم ملاكا من خلال خريطة تفاعلية وقوائم مصنفة.",
   },
   {
     src: "/projects/wanderlust-gallery/melaka-itinerary.png",
@@ -95,11 +95,11 @@ const screenshots = [
   {
     src: "/projects/wanderlust-gallery/melaka-local-advice.png",
     en: "Local Melaka Advice",
-    ar: "إرشادات محلية في ملقا",
+    ar: "إرشادات محلية في ملاكا",
     descEn:
       "Destination-specific recommendations and advice for exploring local food and culture.",
     descAr:
-      "نصائح محلية لاكتشاف المأكولات والثقافة والأماكن في ملقا.",
+      "نصائح محلية لاكتشاف المأكولات والثقافة والأماكن في ملاكا.",
   },
 ];
 
@@ -292,7 +292,7 @@ const translations = {
     back: "العودة إلى المشاريع",
     eyebrow: "مشروع جامعي جماعي · مساهماتي الشخصية",
     title: "Melaka Wanderlust",
-    subtitle: "اكتشف ملقا، وخطط بذكاء، واستمتع برحلتك.",
+    subtitle: "اكتشف ملاكا، وخطط بذكاء، واستمتع برحلتك.",
     description:
       "تطبيق سياحي باستخدام Flutter يساعد الزوار على اكتشاف المعالم السياحية واستكشاف الوجهات عبر خرائط Google، وتصفية الأماكن حسب الميزانية، وحفظ المفضلة، وقراءة التقييمات، وتنظيم مسارات الرحلات.",
 
@@ -304,7 +304,7 @@ const translations = {
     galleryButton: "عرض صور التطبيق",
 
     overviewLabel: "01 / نظرة عامة",
-    overviewTitle: "طريقة أذكى لاكتشاف ملقا",
+    overviewTitle: "طريقة أذكى لاكتشاف مملاكا",
 
     challengeTitle: "التحدي",
     challenge:

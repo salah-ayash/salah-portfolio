@@ -5,10 +5,10 @@ import type { FormEvent } from "react";
 import { motion, MotionConfig } from "motion/react";
 import { useLocale } from "next-intl";
 
-
 const CONTACT_EMAIL = "salahayash8@gmail.com";
-
 const GITHUB_URL = "https://github.com/salah-ayash";
+const CONTACT_PHONE = "+966570179935";
+const CONTACT_PHONE_DISPLAY = "+966 57 017 9935";
 
 const translations = {
   en: {
@@ -16,62 +16,101 @@ const translations = {
     title: "Let's Build Something Great Together",
     description:
       "Have a project, job opportunity, or collaboration in mind? I'm always interested in discussing software development and meaningful technical challenges.",
+
     emailTitle: "Email Me",
     emailDescription: "Reach out directly via email.",
+
     githubTitle: "GitHub",
-    githubDescription: "Explore my repositories and development work.",
+    githubDescription:
+      "Explore my repositories and development work.",
+
+    phoneTitle: "Phone",
+    phoneDescription:
+      "Get in touch with me directly by phone.",
+
     formTitle: "Send Me a Message",
     formDescription:
       "Fill in the details below to prepare an email.",
+
     name: "Your Name",
     namePlaceholder: "Enter your full name",
+
     email: "Your Email",
     emailPlaceholder: "you@example.com",
+
     message: "Your Message",
     messagePlaceholder:
       "Tell me about your project or opportunity...",
+
     send: "Compose Email",
-   
   },
+
   ar: {
     eyebrow: "لنبقَ على تواصل",
     title: "لنبنِ شيئاً رائعاً معاً",
     description:
       "هل لديك مشروع أو فرصة عمل أو فكرة للتعاون؟ يسعدني التواصل معك ومناقشة مشاريع تطوير البرمجيات والتحديات التقنية.",
+
     emailTitle: "البريد الإلكتروني",
-    emailDescription: "تواصل معي مباشرة عبر البريد الإلكتروني.",
+    emailDescription:
+      "تواصل معي مباشرة عبر البريد الإلكتروني.",
+
     githubTitle: "GitHub",
-    githubDescription: "استكشف مستودعاتي ومشاريعي البرمجية.",
+    githubDescription:
+      "استكشف مستودعاتي ومشاريعي البرمجية.",
+
+    phoneTitle: "رقم الهاتف",
+    phoneDescription: "تواصل معي مباشرة عبر الهاتف.",
+
     formTitle: "أرسل لي رسالة",
     formDescription:
       "أدخل معلوماتك أدناه لتحضير رسالة بريد إلكتروني.",
+
     name: "الاسم",
     namePlaceholder: "أدخل اسمك الكامل",
+
     email: "بريدك الإلكتروني",
     emailPlaceholder: "you@example.com",
+
     message: "رسالتك",
     messagePlaceholder:
       "أخبرني عن مشروعك أو فرصة العمل...",
+
     send: "إنشاء رسالة بريدية",
-    
   },
 };
 
 const fieldClass =
   "mt-2 w-full rounded-xl border border-white/10 bg-[#0A1425] px-4 py-3.5 text-sm text-white outline-none transition-colors placeholder:text-slate-500 focus:border-blue-400/60 focus:ring-2 focus:ring-blue-500/10";
 
+const contactCardClass =
+  "group rounded-2xl border border-blue-400/15 bg-gradient-to-br from-[#111D32] to-[#0D1729] p-6 transition-colors duration-300 hover:border-blue-400/50";
+
+const contactIconClass =
+  "flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border border-blue-500/20 bg-blue-500/10 text-2xl";
+
 export default function Contact() {
   const isArabic = useLocale() === "ar";
   const t = isArabic ? translations.ar : translations.en;
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  function handleSubmit(
+    event: FormEvent<HTMLFormElement>
+  ) {
     event.preventDefault();
 
     const formData = new FormData(event.currentTarget);
 
-    const name = String(formData.get("name") ?? "").trim();
-    const email = String(formData.get("email") ?? "").trim();
-    const message = String(formData.get("message") ?? "").trim();
+    const name = String(
+      formData.get("name") ?? ""
+    ).trim();
+
+    const email = String(
+      formData.get("email") ?? ""
+    ).trim();
+
+    const message = String(
+      formData.get("message") ?? ""
+    ).trim();
 
     if (!name || !email || !message) return;
 
@@ -83,9 +122,10 @@ export default function Contact() {
       ? `الاسم: ${name}\nالبريد: ${email}\n\nالرسالة:\n${message}`
       : `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`;
 
-    const mailto = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(
-      subject
-    )}&body=${encodeURIComponent(body)}`;
+    const mailto =
+      `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(
+        subject
+      )}&body=${encodeURIComponent(body)}`;
 
     window.location.href = mailto;
   }
@@ -113,7 +153,10 @@ export default function Contact() {
           <motion.div
             initial={{ opacity: 0, y: 25 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
+            viewport={{
+              once: true,
+              amount: 0.2,
+            }}
             transition={{ duration: 0.6 }}
             className="mb-12 text-start"
           >
@@ -136,9 +179,9 @@ export default function Contact() {
             </p>
           </motion.div>
 
-          {/* Contact layout */}
+          {/* Two-column contact layout */}
           <div className="grid items-start gap-6 lg:grid-cols-[0.9fr_1.1fr] lg:gap-8">
-            {/* Contact methods */}
+            {/* LEFT: Contact methods */}
             <motion.div
               initial={{ opacity: 0, y: 25 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -149,11 +192,13 @@ export default function Contact() {
               {/* Email */}
               <a
                 href={`mailto:${CONTACT_EMAIL}`}
-                className="group rounded-2xl border border-blue-400/15 bg-gradient-to-br from-[#111D32] to-[#0D1729] p-6 transition-colors duration-300 hover:border-blue-400/50"
+                className={contactCardClass}
               >
                 <div className="flex items-start gap-4">
-                  <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border border-blue-500/20 bg-blue-500/10 text-2xl">
-                    <span aria-hidden="true">✉️</span>
+                  <div className={contactIconClass}>
+                    <span aria-hidden="true">
+                      ✉️
+                    </span>
                   </div>
 
                   <div className="min-w-0 flex-1 text-start">
@@ -180,11 +225,13 @@ export default function Contact() {
                 href={GITHUB_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group rounded-2xl border border-blue-400/15 bg-gradient-to-br from-[#111D32] to-[#0D1729] p-6 transition-colors duration-300 hover:border-blue-400/50"
+                className={contactCardClass}
               >
                 <div className="flex items-start gap-4">
-                  <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border border-blue-500/20 bg-blue-500/10 text-2xl">
-                    <span aria-hidden="true">💻</span>
+                  <div className={contactIconClass}>
+                    <span aria-hidden="true">
+                      💻
+                    </span>
                   </div>
 
                   <div className="min-w-0 flex-1 text-start">
@@ -205,14 +252,49 @@ export default function Contact() {
                   </div>
                 </div>
               </a>
+
+              {/* Phone */}
+              <a
+                href={`tel:${CONTACT_PHONE}`}
+                className={contactCardClass}
+                aria-label={`${t.phoneTitle}: ${CONTACT_PHONE_DISPLAY}`}
+              >
+                <div className="flex items-start gap-4">
+                  <div className={contactIconClass}>
+                    <span aria-hidden="true">
+                      📱
+                    </span>
+                  </div>
+
+                  <div className="min-w-0 flex-1 text-start">
+                    <h3 className="text-lg font-bold text-white">
+                      {t.phoneTitle}
+                    </h3>
+
+                    <p className="mt-2 text-sm leading-7 text-slate-400">
+                      {t.phoneDescription}
+                    </p>
+
+                    <p
+                      dir="ltr"
+                      className="mt-4 text-start text-sm font-medium text-blue-300 transition-colors group-hover:text-cyan-300"
+                    >
+                      {CONTACT_PHONE_DISPLAY}
+                    </p>
+                  </div>
+                </div>
+              </a>
             </motion.div>
 
-            {/* Contact form */}
+            {/* RIGHT: Contact form */}
             <motion.div
               initial={{ opacity: 0, y: 25 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.65, delay: 0.1 }}
+              transition={{
+                duration: 0.65,
+                delay: 0.1,
+              }}
               className="relative overflow-hidden rounded-[26px] border border-blue-400/25 bg-gradient-to-br from-[#111D32] via-[#0F192B] to-[#0A1425] p-6 shadow-[0_15px_50px_rgba(0,0,0,0.2)] sm:p-8"
             >
               <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-blue-400/60 to-transparent" />
@@ -229,6 +311,7 @@ export default function Contact() {
                 onSubmit={handleSubmit}
                 className="mt-8 space-y-5"
               >
+                {/* Name */}
                 <div>
                   <label
                     htmlFor="contact-name"
@@ -249,6 +332,7 @@ export default function Contact() {
                   />
                 </div>
 
+                {/* Email */}
                 <div>
                   <label
                     htmlFor="contact-email"
@@ -270,6 +354,7 @@ export default function Contact() {
                   />
                 </div>
 
+                {/* Message */}
                 <div>
                   <label
                     htmlFor="contact-message"
@@ -289,18 +374,21 @@ export default function Contact() {
                   />
                 </div>
 
+                {/* Submit */}
                 <button
                   type="submit"
                   className="flex min-h-12 w-full items-center justify-center gap-3 rounded-xl bg-blue-600 px-6 py-3.5 text-sm font-bold text-white shadow-[0_8px_30px_rgba(37,99,235,0.2)] transition-all duration-300 hover:-translate-y-1 hover:bg-blue-500 hover:shadow-[0_12px_35px_rgba(37,99,235,0.3)]"
                 >
-                  <span aria-hidden="true">✉</span>
+                  <span aria-hidden="true">
+                    ✉
+                  </span>
+
                   {t.send}
+
                   <span aria-hidden="true">
                     {isArabic ? "↖" : "↗"}
                   </span>
                 </button>
-
-                
               </form>
             </motion.div>
           </div>

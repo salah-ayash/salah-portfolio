@@ -1,13 +1,16 @@
 @import "tailwindcss";
 
+/* Global color scheme */
 :root {
   color-scheme: dark;
 }
 
+/* Smooth scrolling */
 html {
   scroll-behavior: smooth;
 }
 
+/* Original font for English and Arabic */
 body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;

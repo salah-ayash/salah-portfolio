@@ -31,9 +31,9 @@ export default function HomePage() {
       {/* Full-width sections with their own centered containers */}
       <About />
 
-      <Experience />
-
       <Skills />
+
+      <Experience />
 
       <Projects />
 

@@ -4,6 +4,28 @@
 import { motion, MotionConfig } from "motion/react";
 import { useLocale, useTranslations } from "next-intl";
 
+// Keep English technical terms in the correct direction
+// when they appear inside Arabic sentences.
+
+const technicalTerms =
+  /(Bumi Terus ITS Sdn\. Bhd\.|Bumi Terus ITS|Next\.js|UTeM|Flutter|Firebase|MySQL|AWS|React|PHP|IoT|C\+\+)/g;
+
+function formatMixedText(text: string) {
+  return text.split(technicalTerms).map((part, index) => {
+    // Matched technical terms are at odd indices
+    if (index % 2 === 1) {
+      return (
+        <bdi key={index} dir="ltr">
+          {part}
+        </bdi>
+      );
+    }
+
+    return part;
+  });
+}
+
+
 export default function About() {
   const t = useTranslations("About");
   const isArabic = useLocale() === "ar";
@@ -29,11 +51,15 @@ export default function About() {
     },
   ];
 
+  const renderText = (text: string) =>
+    isArabic ? formatMixedText(text) : text;
+
   return (
     <MotionConfig reducedMotion="user">
       <section
         id="about"
         dir={isArabic ? "rtl" : "ltr"}
+        
         className="relative isolate w-full scroll-mt-24 overflow-hidden border-t border-white/10 bg-[#080B14] py-20 sm:py-24"
       >
         {/* Background Glows */}
@@ -51,12 +77,7 @@ export default function About() {
         <div className="relative mx-auto w-full max-w-6xl px-5 sm:px-8 lg:px-10">
           <div className="grid min-w-0 items-center gap-12 lg:grid-cols-2 lg:gap-16">
 
-            {/* ========================================
-                INTRODUCTION
-                Right side in Arabic
-                Left side in English
-            ======================================== */}
-
+            {/* Introduction */}
             <motion.div
               initial={{ opacity: 0, y: 25 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -65,12 +86,18 @@ export default function About() {
               className="min-w-0 text-start"
             >
               {/* Eyebrow */}
-              <span className="mb-5 inline-block text-xs font-bold uppercase tracking-[0.15em] text-blue-400 sm:text-sm">
+              <span
+                className={`mb-5 inline-block text-xs font-bold text-blue-400 sm:text-sm ${
+                  isArabic
+                    ? ""
+                    : "uppercase tracking-[0.15em]"
+                }`}
+              >
                 {t("eyebrow")}
               </span>
 
               {/* Heading */}
-              <h2 className="max-w-xl text-3xl font-extrabold leading-[1.35] tracking-tight text-white sm:text-4xl lg:text-5xl">
+              <h2 className="max-w-xl text-3xl font-extrabold leading-[1.5] tracking-tight text-white sm:text-4xl lg:text-5xl">
                 {t("title")}
               </h2>
 
@@ -78,17 +105,15 @@ export default function About() {
               <div className="my-7 h-1 w-24 rounded-full bg-gradient-to-r from-blue-500 to-cyan-400" />
 
               {/* Description */}
-              <p className="max-w-xl text-base leading-9 text-slate-400 sm:text-lg sm:leading-10">
-                {t("description")}
+              <p
+                dir={isArabic ? "rtl" : "ltr"}
+                className="max-w-xl text-base leading-9 text-slate-400 sm:text-lg sm:leading-10"
+              >
+                {renderText(t("description"))}
               </p>
             </motion.div>
 
-            {/* ========================================
-                INFORMATION CARDS
-                Left side in Arabic
-                Right side in English
-            ======================================== */}
-
+            {/* Information Cards */}
             <div className="grid min-w-0 gap-4">
               {highlights.map((item, index) => (
                 <motion.article
@@ -134,8 +159,11 @@ export default function About() {
                         </span>
                       </div>
 
-                      <p className="break-words text-sm leading-8 text-slate-300 sm:text-base">
-                        {item.value}
+                      <p
+                        dir={isArabic ? "rtl" : "ltr"}
+                        className="break-words text-sm leading-8 text-slate-300 sm:text-base"
+                      >
+                        {renderText(item.value)}
                       </p>
                     </div>
                   </div>

@@ -1,35 +1,34 @@
 
 "use client";
 
-import {useState} from "react";
-import {useLocale, useTranslations} from "next-intl";
-import {Link} from "@/i18n/navigation";
+import { useState } from "react";
+import { useLocale, useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const locale = useLocale();
   const nav = useTranslations("Navigation");
 
- 
-
-
-const links = [
-  { name: nav("home"), href: "#home" },
-  { name: nav("about"), href: "#about" },
-  { name: nav("experience"), href: "#experience" },
-  { name: nav("skills"), href: "#skills" },
-  { name: nav("projects"), href: "#projects" },
-  { name: nav("contact"), href: "#contact" },
-];
-
-
+  // Professional navigation order
+  const links = [
+    { name: nav("home"), href: "#home" },
+    { name: nav("about"), href: "#about" },
+    { name: nav("skills"), href: "#skills" },
+    { name: nav("experience"), href: "#experience" },
+    { name: nav("projects"), href: "#projects" },
+    { name: nav("contact"), href: "#contact" },
+  ];
 
   return (
     <header className="sticky top-0 z-50 border-b border-white/10 bg-[#080B14]/85 backdrop-blur-xl">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-4 sm:px-8">
 
         {/* Logo */}
-        <a href="#home" className="text-2xl font-bold tracking-tight">
+        <a
+          href="#home"
+          className="text-2xl font-bold tracking-tight"
+        >
           SA<span className="text-blue-500">.</span>
         </a>
 
@@ -47,8 +46,10 @@ const links = [
         </nav>
 
         <div className="flex items-center gap-3">
+
           {/* Language Switcher */}
           <div className="flex items-center rounded-xl border border-white/15 bg-white/5 p-1 text-sm">
+
             <Link
               href="/"
               locale="en"
